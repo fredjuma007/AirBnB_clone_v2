@@ -1,4 +1,4 @@
--- Creates database hbnb_test_db, user hbnb_test and grants priveleges
+-- Creates database and grants priveleges
 
 CREATE DATABASE IF NOT EXISTS hbnb_test_db;
 CREATE USER IF NOT EXISTS 'hbnb_test'@'localhost' IDENTIFIED BY 'hbnb_test_pwd';
