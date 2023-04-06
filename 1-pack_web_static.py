@@ -14,4 +14,3 @@ def do_pack():
         return filename
     except:
         return None
-
