@@ -1,11 +1,13 @@
-#!/usr/bin/python3
-# makes tgz archive
+#!/usr/bin/script
+"""
+deployiing stuff
+"""
 from fabric.api import env, put, run
 import os.path
-env.hosts = ['100.26.157.189', '52.207.208.65']
+env.hosts = ['100.26.157.189','52.207.208.65']
 
 
-ef do_deploy(archive_path):
+def do_deploy(archive_path):
     """
     Deploy archive to web server
     """
