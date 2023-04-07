@@ -5,7 +5,7 @@ import os.path
 env.hosts = ['100.26.157.189', '52.207.208.65']
 
 
-def do_deploy(archive_path):
+ef do_deploy(archive_path):
     """
     Deploy archive to web server
     """
