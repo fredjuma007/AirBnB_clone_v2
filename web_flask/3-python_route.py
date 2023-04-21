@@ -1,31 +1,46 @@
 #!/usr/bin/python3
-# starts flask with c thing
-from flask import Flask
+"""
+script starts Flask web app
+    listen on 0.0.0.0, port 5000
+    routes: /:              display "Hello HBNB!"
+            /hbnb:          display "HBNB"
+            /c/<text>:      display "C" + text (replace underscores with space)
+            /python/<text>: display "Python" + text (default is "is cool")
+"""
 
+from flask import Flask
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello HBNB!'
+def hello_hbnb():
+    """display text"""
+    return "Hello HBNB!"
 
 
 @app.route('/hbnb')
 def hbnb():
-    return 'HBNB'
+    """display text"""
+    return "HBNB"
 
 
 @app.route('/c/<text>')
-def ctext(text):
-    return 'C ' + text.replace("_", ' ')
+def c_text(text):
+    """display custom text given"""
+    return "C {}".format(text.replace('_', ' '))
 
 
-@app.route('/python/')
+@app.route('/python')
 @app.route('/python/<text>')
-def ptext(text='is cool'):
-    return 'Python {}'.format(text.replace("_", ' '))
+def python_text(text="is cool"):
+    """display custom text given
+       first route statement ensures it works for:
+          curl -Ls 0.0.0.0:5000/python ; echo "" | cat -e
+          curl -Ls 0.0.0.0:5000/python/ ; echo "" | cat -e
+    """
+    return "Python {}".format(text.replace('_', ' '))
 
 
 if __name__ == "__main__":
-    app.url_map.strict_slashes = False
     app.run(host="0.0.0.0", port=5000)
